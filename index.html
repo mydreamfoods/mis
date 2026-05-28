@@ -22,19 +22,11 @@
 
 <style>
 
-/* ===================================================== */
-/* ================= RESET ============================= */
-/* ===================================================== */
-
 *{
   margin:0;
   padding:0;
   box-sizing:border-box;
 }
-
-/* ===================================================== */
-/* ================= BODY ============================== */
-/* ===================================================== */
 
 body{
 
@@ -52,9 +44,7 @@ body{
   overflow:hidden;
 }
 
-/* ===================================================== */
-/* ================= LOADER ============================ */
-/* ===================================================== */
+/* ================= LOADER ================= */
 
 #loader{
 
@@ -81,7 +71,6 @@ body{
 }
 
 .loader-box{
-
   text-align:center;
 }
 
@@ -121,9 +110,7 @@ body{
   }
 }
 
-/* ===================================================== */
-/* ================= HEADER ============================ */
-/* ===================================================== */
+/* ================= HEADER ================= */
 
 .header{
 
@@ -134,21 +121,18 @@ body{
   z-index:1000;
 
   background:
-  linear-gradient(
-    135deg,
-    #eef2ff,
-    #f8fafc
-  );
+  rgba(255,255,255,0.75);
+
+  backdrop-filter:blur(18px);
 
   padding:18px 24px 14px;
 
-  box-shadow:
-    0 4px 12px rgba(0,0,0,0.04);
-}
+  border-bottom:
+  1px solid rgba(255,255,255,0.5);
 
-/* ===================================================== */
-/* ================= TOPBAR ============================ */
-/* ===================================================== */
+  box-shadow:
+    0 8px 30px rgba(15,23,42,0.05);
+}
 
 .topbar{
 
@@ -165,10 +149,6 @@ body{
   margin-bottom:16px;
 }
 
-/* ===================================================== */
-/* ================= TITLE ============================= */
-/* ===================================================== */
-
 .title{
 
   font-size:30px;
@@ -176,11 +156,11 @@ body{
   font-weight:800;
 
   color:#0f172a;
+
+  letter-spacing:-0.5px;
 }
 
-/* ===================================================== */
-/* ================= FILTERS =========================== */
-/* ===================================================== */
+/* ================= FILTERS ================= */
 
 .filters{
 
@@ -191,34 +171,38 @@ body{
   flex-wrap:wrap;
 }
 
-/* ===================================================== */
-/* ================= INPUTS ============================ */
-/* ===================================================== */
-
 .select,
 .input{
 
   padding:12px 16px;
 
-  border:none;
-
   border-radius:14px;
 
   background:white;
 
-  font-size:13px;
+  font-size:18px;
 
   min-width:200px;
 
   outline:none;
 
+  border:
+  1px solid #e2e8f0;
+
+  transition:0.25s;
+
   box-shadow:
-    0 6px 18px rgba(15,23,42,0.06);
+    0 4px 14px rgba(15,23,42,0.05);
 }
 
-/* ===================================================== */
-/* ================= RESET BUTTON ====================== */
-/* ===================================================== */
+.select:focus,
+.input:focus{
+
+  border-color:#2563eb;
+
+  box-shadow:
+    0 0 0 4px rgba(37,99,235,0.12);
+}
 
 .reset-btn{
 
@@ -244,7 +228,7 @@ body{
   cursor:pointer;
 
   box-shadow:
-    0 6px 18px rgba(220,38,38,0.25);
+    0 8px 20px rgba(220,38,38,0.25);
 
   transition:0.3s;
 }
@@ -256,9 +240,7 @@ body{
   opacity:0.95;
 }
 
-/* ===================================================== */
-/* ================= KPI CARDS ========================= */
-/* ===================================================== */
+/* ================= KPI CARDS ================= */
 
 .summary-grid{
 
@@ -267,29 +249,41 @@ body{
   grid-template-columns:
   repeat(7,minmax(0,1fr));
 
-  gap:12px;
+  gap:14px;
 }
-
-/* ===================================================== */
-/* ================= CARD ============================== */
-/* ===================================================== */
 
 .card{
 
-  background:white;
+  background:
+  rgba(255,255,255,0.8);
 
-  border-radius:18px;
+  backdrop-filter:blur(14px);
 
-  padding:16px;
+  border-radius:22px;
+
+  padding:18px;
 
   position:relative;
 
   overflow:hidden;
 
-  box-shadow:
-    0 6px 18px rgba(15,23,42,0.06);
+  border:
+  1px solid rgba(255,255,255,0.5);
 
-  min-height:95px;
+  box-shadow:
+    0 10px 25px rgba(15,23,42,0.06);
+
+  min-height:100px;
+
+  transition:0.3s ease;
+}
+
+.card:hover{
+
+  transform:translateY(-4px);
+
+  box-shadow:
+    0 18px 40px rgba(15,23,42,0.12);
 }
 
 .card::before{
@@ -305,10 +299,6 @@ body{
 
   height:5px;
 }
-
-/* ===================================================== */
-/* ================= CARD COLORS ======================= */
-/* ===================================================== */
 
 .blue::before{
 
@@ -340,26 +330,24 @@ body{
   );
 }
 
-/* ===================================================== */
-/* ================= CARD TEXT ========================= */
-/* ===================================================== */
-
 .card-title{
 
   font-size:11px;
 
-  color:#6b7280;
+  color:#64748b;
 
   margin-bottom:10px;
 
-  font-weight:600;
+  font-weight:700;
 
-  line-height:1.3;
+  text-transform:uppercase;
+
+  letter-spacing:0.4px;
 }
 
 .card-value{
 
-  font-size:26px;
+  font-size:30px;
 
   font-weight:800;
 }
@@ -376,9 +364,7 @@ body{
   color:#dc2626;
 }
 
-/* ===================================================== */
-/* ================= TABLE AREA ======================== */
-/* ===================================================== */
+/* ================= TABLE ================= */
 
 .table-area{
 
@@ -386,7 +372,7 @@ body{
 
   height:calc(100vh - 280px);
 
-  transition:0.3s;
+  overflow:hidden;
 }
 
 .table-area.full-page{
@@ -394,42 +380,40 @@ body{
   height:calc(100vh - 92px);
 }
 
-/* ===================================================== */
-/* ================= TABLE WRAPPER ===================== */
-/* ===================================================== */
-
 .table-wrapper{
-
-  background:white;
-
-  border-radius:22px;
-
-  overflow:auto;
-
-  scroll-behavior:smooth;
 
   height:100%;
 
-  box-shadow:
-    0 10px 30px rgba(15,23,42,0.08);
-}
+  overflow-y:auto;
 
-/* ===================================================== */
-/* ================= TABLE ============================= */
-/* ===================================================== */
+  overflow-x:hidden;
+
+  border-radius:28px;
+
+  background:
+  rgba(255,255,255,0.75);
+
+  backdrop-filter:blur(18px);
+
+  border:
+  1px solid rgba(255,255,255,0.4);
+
+  box-shadow:
+    0 10px 40px rgba(15,23,42,0.08);
+}
 
 table{
 
   width:100%;
 
-  min-width:1100px;
+  border-collapse:separate;
 
-  border-collapse:collapse;
+  border-spacing:0;
+
+  table-layout:fixed;
 }
 
-/* ===================================================== */
-/* ================= TABLE HEADER ====================== */
-/* ===================================================== */
+/* ================= ATTRACTIVE HEADER ================= */
 
 thead th{
 
@@ -437,35 +421,107 @@ thead th{
 
   top:0;
 
-  z-index:999;
+  z-index:9;
+
+  padding:18px 16px;
 
   background:
   linear-gradient(
-    90deg,
-    #1e3a8a,
-    #2563eb
+    135deg,
+    #7c3aed,
+    #ec4899,
+    #f59e0b
   );
+
+  background-size:200% 200%;
+
+  animation:headerMove 8s ease infinite;
 
   color:white;
 
-  padding:16px;
+  font-size:12px;
 
-  font-size:13px;
+  font-weight:800;
 
-  font-weight:700;
+  text-transform:uppercase;
+
+  letter-spacing:1px;
+
+  border:none;
 
   white-space:normal;
 
-  word-break:break-word;
+  word-wrap:break-word;
+
+  box-shadow:
+    inset 0 -1px 0 rgba(255,255,255,0.15);
 }
 
-/* ===================================================== */
-/* ================= TABLE BODY ======================== */
-/* ===================================================== */
+@keyframes headerMove{
+
+  0%{
+    background-position:0% 50%;
+  }
+
+  50%{
+    background-position:100% 50%;
+  }
+
+  100%{
+    background-position:0% 50%;
+  }
+}
+
+thead th:first-child{
+  border-top-left-radius:20px;
+}
+
+thead th:last-child{
+  border-top-right-radius:20px;
+}
+
+
+tbody tr{
+
+  transition:0.25s;
+
+  animation:fadeRow 0.35s ease;
+}
+
+tbody tr:nth-child(even){
+  background:#f8fbff;
+}
+
+tbody tr:nth-child(odd){
+  background:#ffffff;
+}
+
+tbody tr:hover{
+
+  background:#eef4ff;
+
+  transform:scale(1.002);
+
+  box-shadow:
+    inset 4px 0 0 #2563eb;
+}
+
+@keyframes fadeRow{
+
+  from{
+    opacity:0;
+    transform:translateY(6px);
+  }
+
+  to{
+    opacity:1;
+    transform:translateY(0);
+  }
+}
 
 td{
 
-  padding:14px 16px;
+  padding:18px 20px;
 
   border-bottom:
   1px solid #edf2f7;
@@ -474,11 +530,9 @@ td{
 
   font-size:13px;
 
-  vertical-align:top;
+  color:#334155;
 
-  word-break:break-word;
-
-  line-height:1.5;
+  line-height:1.6;
 }
 
 td:first-child{
@@ -486,34 +540,54 @@ td:first-child{
   text-align:left;
 
   font-weight:700;
+
+  color:#0f172a;
 }
 
-tbody tr:hover{
+/* ================= STATUS ================= */
 
-  background:#f8fbff;
+
+.done,
+.pending{
+
+  display:flex;
+
+  align-items:center;
+
+  justify-content:center;
+
+  margin:auto;
+
+  width:160px;
+
+  height:42px;
+
+  border-radius:999px;
+
+  font-size:14px;
+
+  font-weight:700;
+
+  text-align:center;
 }
-
-/* ===================================================== */
-/* ================= STATUS ============================ */
-/* ===================================================== */
 
 .done{
 
-  color:#16a34a;
+  background:
+  rgba(16,185,129,0.12);
 
-  font-weight:700;
+  color:#059669;
 }
 
 .pending{
 
-  color:#dc2626;
+  background:
+  rgba(236,72,153,0.12);
 
-  font-weight:700;
+  color:#db2777;
 }
 
-/* ===================================================== */
-/* ================= CLICK TASK ======================== */
-/* ===================================================== */
+/* ================= CLICK TASK ================= */
 
 .click-task{
 
@@ -522,16 +596,35 @@ tbody tr:hover{
   cursor:pointer;
 
   font-weight:700;
+
+  position:relative;
 }
 
-.click-task:hover{
+.click-task::after{
 
-  text-decoration:underline;
+  content:"";
+
+  position:absolute;
+
+  left:0;
+
+  bottom:-2px;
+
+  width:0;
+
+  height:2px;
+
+  background:#2563eb;
+
+  transition:0.3s;
 }
 
-/* ===================================================== */
-/* ================= POPUP ============================= */
-/* ===================================================== */
+.click-task:hover::after{
+
+  width:100%;
+}
+
+/* ================= POPUP ================= */
 
 .popup-overlay{
 
@@ -540,7 +633,9 @@ tbody tr:hover{
   inset:0;
 
   background:
-  rgba(0,0,0,0.55);
+  rgba(15,23,42,0.55);
+
+  backdrop-filter:blur(6px);
 
   display:none;
 
@@ -569,7 +664,7 @@ tbody tr:hover{
 
   background:white;
 
-  border-radius:24px;
+  border-radius:28px;
 
   overflow:hidden;
 
@@ -578,24 +673,22 @@ tbody tr:hover{
   flex-direction:column;
 
   box-shadow:
-  0 20px 60px rgba(0,0,0,0.25);
-
-  cursor:default;
+    0 30px 80px rgba(0,0,0,0.25);
 }
-/* ===================================================== */
-/* ================= POPUP HEADER ====================== */
-/* ===================================================== */
 
 .popup-header{
 
-  flex-shrink:0;
-
-  background:white;
+  background:
+  linear-gradient(
+    135deg,
+    #ffffff,
+    #f8fafc
+  );
 
   padding:22px 28px;
 
   border-bottom:
-  1px solid #e5e7eb;
+  1px solid #e2e8f0;
 
   display:flex;
 
@@ -603,11 +696,7 @@ tbody tr:hover{
 
   align-items:center;
 
-  gap:20px;
-
   cursor:move;
-
-  user-select:none;
 }
 
 .popup-title{
@@ -617,13 +706,7 @@ tbody tr:hover{
   font-weight:800;
 
   color:#0f172a;
-
-  line-height:1.4;
 }
-
-/* ===================================================== */
-/* ================= CLOSE BUTTON ====================== */
-/* ===================================================== */
 
 .close-popup{
 
@@ -633,115 +716,42 @@ tbody tr:hover{
 
   border:none;
 
-  border-radius:12px;
+  border-radius:14px;
 
-  background:#ef4444;
+  background:
+  linear-gradient(
+    135deg,
+    #ef4444,
+    #dc2626
+  );
 
   color:white;
 
-  font-size:24px;
+  font-size:22px;
 
   cursor:pointer;
-
-  flex-shrink:0;
-
-  transition:0.2s;
 }
-
-.close-popup:hover{
-
-  transform:scale(1.05);
-}
-
-/* ===================================================== */
-/* ================= POPUP BODY ======================== */
-/* ===================================================== */
 
 .popup-body{
 
-  overflow:auto;
+  overflow-y:auto;
+
+  overflow-x:hidden;
 
   max-height:calc(92vh - 90px);
-
-  padding:0;
 }
-
-/* ===================================================== */
-/* ================= POPUP TABLE ======================= */
-/* ===================================================== */
 
 .popup-table{
 
   width:100%;
 
-  border-collapse:collapse;
-
   table-layout:fixed;
+
+  border-collapse:separate;
+
+  border-spacing:0;
 }
-
-.popup-table th{
-
-  position:sticky;
-
-  top:0;
-
-  z-index:5;
-
-  background:
-  linear-gradient(
-    90deg,
-    #1e3a8a,
-    #2563eb
-  );
-
-  color:white;
-
-  padding:16px;
-
-  font-size:13px;
-
-  font-weight:700;
-}
-
-.popup-table td{
-
-  padding:14px 16px;
-
-  border-bottom:
-  1px solid #e5e7eb;
-
-  font-size:13px;
-
-  line-height:1.5;
-
-  word-break:break-word;
-}
-
-.popup-table tbody tr:hover{
-
-  background:#f8fbff;
-}
-
-/* ===================================================== */
-/* ================= SCROLLBAR ========================= */
-/* ===================================================== */
-
-::-webkit-scrollbar{
-
-  width:10px;
-  height:10px;
-}
-
-::-webkit-scrollbar-thumb{
-
-  background:#cbd5e1;
-
-  border-radius:20px;
-}
-
-/* ===================================================== */
-/* ================= RESPONSIVE ======================== */
-/* ===================================================== */
+/* ================= RESPONSIVE ================= */
 
 @media(max-width:1400px){
 
@@ -774,14 +784,6 @@ tbody tr:hover{
   .table-area{
     padding:0 16px 16px;
     height:auto;
-  }
-
-  .title{
-    font-size:24px;
-  }
-
-  .card-value{
-    font-size:22px;
   }
 
   .filters{
@@ -1389,9 +1391,11 @@ function renderFilteredTable(data){
           ${item.task}
         </td>
 
-        <td class="${statusClass}">
-          ${item.status}
-        </td>
+        <td>
+  <div class="${statusClass}">
+    ${item.status}
+  </div>
+</td>
 
       </tr>
     `;
@@ -1608,9 +1612,11 @@ function openTaskPopup(benchmark,task){
         <td>${item.employee}</td>
         <td>${item.task}</td>
 
-        <td class="${statusClass}">
-          ${item.status}
-        </td>
+       <td>
+  <div class="${statusClass}">
+    ${item.status}
+  </div>
+</td>
 
       </tr>
     `;
