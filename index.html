@@ -1534,11 +1534,20 @@ function openTaskPopup(benchmark,task){
   const currentKPISheet =
     allData[currentSheetIndex];
 
-  let currentUser =
+  const normalizeName = s =>
+    s
+      .toLowerCase()
+      .replace(/[^a-z]/g,"");
+
+  const sheetNameTokens =
     currentKPISheet.sheetName
-      .replace(/kpi/gi,"")
-      .trim()
-      .toLowerCase();
+      .split(/\s+/)
+      .filter(t => t.toLowerCase() !== "kpi");
+
+  let currentUser =
+    normalizeName(
+      sheetNameTokens[0] || ""
+    );
 
   const targetSheet =
     allData.find(sheet =>
@@ -1563,25 +1572,49 @@ function openTaskPopup(benchmark,task){
     return;
   }
 
+  const stripTime = s =>
+    s
+      .toLowerCase()
+      .replace(/\s*\d{1,2}(:\d{2})?\s*(am|pm)\b/g, "")
+      .trim();
+
+  const taskNorm = stripTime(task);
+
   const matchedTasks =
     targetSheet.data.filter(item =>
 
-      item.task
-        .toLowerCase()
-        .includes(
-          task.toLowerCase()
-        )
+      stripTime(item.task)
+        .includes(taskNorm)
 
       &&
 
-      item.employee
-        .toLowerCase()
+      normalizeName(item.employee)
         .includes(
           currentUser
         )
     );
 
   if(matchedTasks.length === 0){
+
+    console.warn(
+      "Task popup no-match debug:",
+      {
+        currentSheet: currentKPISheet.sheetName,
+        currentUser,
+        benchmark,
+        targetSheet: targetSheet.sheetName,
+        task,
+        taskNorm,
+        sampleEmployees:
+          [...new Set(
+            targetSheet.data.map(i=>i.employee)
+          )],
+        sampleTasks:
+          [...new Set(
+            targetSheet.data.map(i=>i.task)
+          )]
+      }
+    );
 
     alert(
       "No matching task found"
